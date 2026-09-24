@@ -1,5 +1,4 @@
 import { Flame, Footprints, HeartPulse, Timer } from 'lucide-react'
-import AppLayout from '../../components/AppLayout'
 import Columns from '../../components/Columns'
 import FormActions from '../../components/FormActions'
 import FormField from '../../components/FormField'
@@ -15,7 +14,7 @@ import styles from './NewPost.module.css'
 
 function NewPost() {
   return (
-    <AppLayout>
+    <>
       <Title>Nova postagem</Title>
       <form>
         <Columns mediaSize="fluid">
@@ -83,7 +82,7 @@ function NewPost() {
           </div>
         </Columns>
       </form>
-    </AppLayout>
+    </>
   )
 }
 

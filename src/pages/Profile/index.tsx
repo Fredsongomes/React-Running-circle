@@ -1,4 +1,4 @@
-import AppLayout from '../../components/AppLayout'
+
 import PostCard from '../../components/PostCard'
 import PostsGrid from '../../components/PostsGrid'
 import ProfileHeader from '../../components/ProfileHeader'
@@ -9,7 +9,7 @@ const posts = [1, 2, 3, 4, 5, 6]
 
 function Profile() {
   return (
-    <AppLayout>
+    <>
       <ProfileHeader
         avatarSrc="https://i.pravatar.cc/300?img=59"
         username="@julio"
@@ -38,7 +38,7 @@ function Profile() {
           />
         ))}
       </PostsGrid>
-    </AppLayout>
+    </>
   )
 }
 
