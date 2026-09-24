@@ -1,0 +1,9 @@
+.tag {
+  display: inline-block;
+  padding: 0.375rem 1.5rem;
+  border-radius: 8px;
+  background-color: var(--blue);
+  color: var(--text);
+  font-size: 1rem;
+  text-align: center;
+}

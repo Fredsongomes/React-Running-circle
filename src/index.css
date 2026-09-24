@@ -1,0 +1,65 @@
+:root {
+  --lime: #c6ff3f;
+  --bg: #f8ffe0;
+  --dark: #17181c;
+  --gray-input: #e2e2e2;
+  --gray: #8f8f8f;
+  --text: #1b1b1b;
+  --blue: #587fee;
+
+  --font: 'Chakra Petch', sans-serif;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font);
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}

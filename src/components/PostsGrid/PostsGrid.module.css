@@ -1,0 +1,5 @@
+.postsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 280px);
+  gap: 1.5rem;
+}

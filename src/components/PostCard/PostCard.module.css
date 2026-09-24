@@ -1,0 +1,89 @@
+.postCard {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 8px 24px rgba(88, 127, 238, 0.15);
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+}
+
+.timeLabel {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.time {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.stats > * {
+  flex: 1;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.author img {
+  width: 2.5rem;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background-color: var(--bg);
+}
+
+.reactions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.reaction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  font-family: inherit;
+  color: inherit;
+}
+
+button.reaction {
+  cursor: pointer;
+}
+
+.liked {
+  color: var(--blue);
+}

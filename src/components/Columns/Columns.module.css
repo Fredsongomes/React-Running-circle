@@ -1,0 +1,15 @@
+.columns {
+  display: grid;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* media at its natural size, content takes the rest */
+.fixed {
+  grid-template-columns: auto 1fr;
+}
+
+/* media stretches, content has a fixed width */
+.fluid {
+  grid-template-columns: 1fr 320px;
+}

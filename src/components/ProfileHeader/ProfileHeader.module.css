@@ -1,0 +1,42 @@
+.profileHeader {
+  display: flex;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--gray-input);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  max-width: 560px;
+}
+
+.name {
+  font-size: 1.5rem;
+  color: var(--text);
+}
+
+.stats {
+  font-size: 1.125rem;
+  color: var(--text);
+}
+
+.stats strong {
+  margin-right: 0.25rem;
+}
+
+.edit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: center;
+  margin-left: auto;
+  font-size: 1.125rem;
+}
+
+.edit:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,26 @@
+.searchInput {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 24px;
+  background-color: var(--gray-input);
+  color: var(--text);
+}
+
+.input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-size: 1rem;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--text);
+  opacity: 0.8;
+}

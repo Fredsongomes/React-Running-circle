@@ -1,0 +1,18 @@
+.authLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  color: var(--text);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

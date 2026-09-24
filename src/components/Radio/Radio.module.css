@@ -1,0 +1,42 @@
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.circle {
+  display: grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--text);
+  border-radius: 50%;
+}
+
+.circle::after {
+  content: '';
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background-color: var(--text);
+  opacity: 0;
+}
+
+.input:checked + .circle::after {
+  opacity: 1;
+}
+
+.input:focus-visible + .circle {
+  outline: 2px solid var(--dark);
+  outline-offset: 2px;
+}

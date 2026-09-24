@@ -1,0 +1,30 @@
+.fileItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 100%;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--text);
+}
+
+.name {
+  /* min-width: 0 deixa o span encolher abaixo do conteúdo pro ellipsis funcionar */
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.remove {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  padding: 0.25rem;
+  border-radius: 50%;
+  color: var(--text);
+}
+
+.remove:hover {
+  background-color: var(--gray-input);
+}

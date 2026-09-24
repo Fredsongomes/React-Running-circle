@@ -1,0 +1,9 @@
+.formActions {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.formActions button {
+  flex: 1;
+}

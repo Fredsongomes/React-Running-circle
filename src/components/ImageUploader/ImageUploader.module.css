@@ -1,0 +1,18 @@
+.imageUploader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.imageUploader > button {
+  width: 100%;
+}
+
+.preview {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  object-fit: cover;
+}
