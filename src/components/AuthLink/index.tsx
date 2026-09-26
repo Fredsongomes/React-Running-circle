@@ -1,8 +1,10 @@
-import type { ComponentProps, ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import { NavLink, type NavLinkProps } from 'react-router'
 import { LogIn } from 'lucide-react'
 import styles from './AuthLink.module.css'
 
-type AuthLinkProps = ComponentProps<'a'> & {
+type AuthLinkProps = Omit<NavLinkProps, 'children' | 'className'> & {
+  children?: ReactNode
   linkText: string
   icon?: ReactNode
 }
@@ -11,16 +13,15 @@ function AuthLink({
   children,
   linkText,
   icon = <LogIn size={20} />,
-  href = '#',
   ...rest
 }: AuthLinkProps) {
   return (
     <p className={styles.authLink}>
       {children}
-      <a className={styles.link} href={href} {...rest}>
+      <NavLink className={styles.link} end {...rest}>
         {linkText}
         {icon}
-      </a>
+      </NavLink>
     </p>
   )
 }

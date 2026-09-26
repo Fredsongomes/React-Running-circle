@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react'
+import {type ComponentProps, useState} from 'react'
 import {
   Flame,
   Footprints,
@@ -11,6 +11,8 @@ import ImagePlaceholder from '../ImagePlaceholder'
 import StatChip from '../StatChip'
 import Tag from '../Tag'
 import Text from '../Text'
+import CommentsModal from '../CommentsModal'
+import {likePost, unlikePost} from '../../services/posts.ts'
 import styles from './PostCard.module.css'
 
 type PostCardProps = ComponentProps<'article'> & {
@@ -21,10 +23,12 @@ type PostCardProps = ComponentProps<'article'> & {
   calories: string
   heartRate: string
   author: string
-  avatarSrc: string | null
-  likes: string | number
-  comments: string | number
+  avatarSrc?: string | null
+  likes: number
+  comments: number
   description: string
+  liked: boolean
+  postId: string
 }
 
 function PostCard({
@@ -36,11 +40,43 @@ function PostCard({
   heartRate,
   author,
   avatarSrc,
-  likes,
-  comments,
+  likes: likesInitial,
+  comments: commentsCountInitial,
   description,
+  liked: likedInitial,
+  postId,
   ...rest
 }: PostCardProps) {
+
+  const [likes, setLikes] = useState(likesInitial)
+  const [liked, setLiked] = useState(likedInitial)
+  const [commentsCount, setCommentsCount] = useState(commentsCountInitial)
+  const [isCommentsOpen, setIsCommentsOpen] = useState(false)
+  const [isLiking, setIsLiking] = useState(false)
+
+  async function handleLike() {
+    // evita requisições concorrentes em cliques repetidos
+    if (isLiking) return
+    setIsLiking(true)
+    try {
+      const likeState = liked ? await unlikePost(postId) : await likePost(postId)
+      setLikes(likeState.likesCount)
+      setLiked(likeState.likedByMe)
+    } catch {
+      console.error('Não foi possível atualizar a curtida.')
+    } finally {
+      setIsLiking(false)
+    }
+  }
+
+  function handleCommentCreated() {
+    setCommentsCount((previousCount) => previousCount + 1)
+  }
+
+  function handleCommentDeleted() {
+    setCommentsCount((previousCount) => previousCount - 1)
+  }
+
   return (
     <article className={styles.postCard} {...rest}>
       {imageUrl ? (
@@ -76,17 +112,35 @@ function PostCard({
       </div>
       <footer className={styles.footer}>
         <div className={styles.reactions}>
-          <button type="button" className={styles.reaction}>
+          <button
+              type="button"
+              className={liked ? `${styles.reaction} ${styles.liked}` : styles.reaction}
+              aria-label={liked ? 'Descurtir' : 'Curtir'}
+              aria-pressed={liked}
+              disabled={isLiking}
+              onClick={handleLike}>
             <ThumbsUp size={20} />
             {likes}
           </button>
-          <button type="button" className={styles.reaction}>
+          <button
+              type="button"
+              className={styles.reaction}
+              aria-label="Ver comentários"
+              onClick={() => setIsCommentsOpen(true)}>
             <MessageSquare size={20} />
-            {comments}
+            {commentsCount}
           </button>
         </div>
         <Text>{description}</Text>
       </footer>
+      {isCommentsOpen && (
+        <CommentsModal
+          postId={postId}
+          onClose={() => setIsCommentsOpen(false)}
+          onCommentCreated={handleCommentCreated}
+          onCommentDeleted={handleCommentDeleted}
+        />
+      )}
     </article>
   )
 }

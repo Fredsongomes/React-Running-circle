@@ -3,13 +3,14 @@ import { Pencil } from 'lucide-react'
 import Avatar from '../Avatar'
 import Text from '../Text'
 import styles from './ProfileHeader.module.css'
+import {NavLink} from "react-router";
 
 type ProfileHeaderProps = ComponentProps<'header'> & {
-  avatarSrc: string
+  avatarSrc?: string | null
   username: string
   name: string
   bio: string
-  workouts: string | number
+  workouts: number
 }
 
 function ProfileHeader({
@@ -24,17 +25,17 @@ function ProfileHeader({
     <header className={styles.profileHeader} {...rest}>
       <Avatar size="large" src={avatarSrc} />
       <div className={styles.info}>
-        <Text bold>{username}</Text>
+        <Text bold>@{username}</Text>
         <p className={styles.name}>{name}</p>
         <Text>{bio}</Text>
         <p className={styles.stats}>
-          <strong>{workouts}</strong> Treinos
+          <strong>{workouts}</strong> {workouts === 1 ? 'Treino' : 'Treinos'}
         </p>
       </div>
-      <a className={styles.edit} href="#">
+      <NavLink className={styles.edit} to="/perfil/editar">
         <Pencil size={20} />
         Editar
-      </a>
+      </NavLink>
     </header>
   )
 }

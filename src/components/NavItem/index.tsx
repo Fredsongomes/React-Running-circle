@@ -1,16 +1,18 @@
-import type { ComponentProps, ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import { NavLink, type NavLinkProps } from 'react-router'
 import styles from './NavItem.module.css'
 
-type NavItemProps = ComponentProps<'a'> & {
+type NavItemProps = Omit<NavLinkProps, 'children' | 'className'> & {
+  children?: ReactNode
   icon: ReactNode
 }
 
-function NavItem({ children, icon, href = '#', ...rest }: NavItemProps) {
+function NavItem({ children, icon, ...rest }: NavItemProps) {
   return (
-    <a className={styles.navItem} href={href} {...rest}>
+    <NavLink className={styles.navItem} {...rest}>
       {icon}
       {children}
-    </a>
+    </NavLink>
   )
 }
 

@@ -13,3 +13,16 @@
   flex-direction: column;
   gap: 0.125rem;
 }
+
+.delete {
+  margin-left: auto;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.delete:hover {
+  opacity: 0.7;
+}
