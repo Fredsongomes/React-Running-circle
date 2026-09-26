@@ -1,6 +1,8 @@
 {
   "name": "runner-circle",
   "private": true,
+  "license": "MIT",
+  "author": "Fredson Gomes",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

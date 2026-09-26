@@ -192,6 +192,7 @@ npm run migration:run        # aplica as migrations
 npm run migration:revert     # desfaz a última migration
 npm run migration:generate -- src/migrations/NomeDaMigration
 npm run seed                 # popula o banco
+npm test                     # testes unitários (Jest, sem banco)
 npm run test:e2e             # testes e2e (requer banco rodando)
 ```
 

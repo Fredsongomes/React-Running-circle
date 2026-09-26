@@ -1,6 +1,9 @@
 # 🏃 Runner Circle
 
 <p align="center">
+  <a href="https://github.com/Fredsongomes/React-Running-circle/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Fredsongomes/React-Running-circle/ci.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=CI" alt="CI" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="Licença MIT" /></a>
+  <br />
   <img src="https://img.shields.io/badge/React-19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React 19" />
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
@@ -24,7 +27,7 @@
 Aplicação full stack com **React 19 + TypeScript** no front-end e **NestJS + PostgreSQL** no back-end ([runner-circle-backend](runner-circle-backend/)).
 
 <p align="center">
-  <img src="runner-circle-backend/docs/Desktop%20_%20Vis%C3%A3o%20Geral%20Feed.png" width="85%" alt="Feed do Runner Circle" />
+  <img src="docs/demo.gif" width="85%" alt="Demonstração do Runner Circle: login, feed, busca, curtida, comentários e perfil" />
 </p>
 
 ---
@@ -152,18 +155,30 @@ runner-circle/
 ## 🧪 Testes
 
 ```bash
-npm test
+npm test                            # front-end (Vitest, modo watch)
+cd runner-circle-backend && npm test  # back-end (Jest)
 ```
 
-Os testes usam **Vitest + React Testing Library** e cobrem:
+**Front-end:** Vitest + React Testing Library
 
 - `PostCard`: renderização dos dados e o fluxo de curtir/descurtir, com o serviço mockado
 - `EmptyState`: textos padrão e customizados
 - `utils/format`: formatação de duração, distância (pt-BR) e tipo de treino
 
+**Back-end:** Jest, com os repositórios mockados (não precisa de banco)
+
+- Cadastro: email × usuário, username único, conflitos e hash da senha
+- Login: token válido, senha errada e usuário inexistente
+- Comentários: só o autor pode excluir
+- Filtro de erros e montagem das URLs de upload
+
+A cada push, o **GitHub Actions** roda lint, testes e build do front-end e do back-end.
+
 ---
 
 ## 🖼️ Telas
+
+![Feed](runner-circle-backend/docs/Desktop%20_%20Vis%C3%A3o%20Geral%20Feed.png)
 
 | Perfil | Nova postagem |
 | --- | --- |
@@ -181,7 +196,7 @@ Os testes usam **Vitest + React Testing Library** e cobrem:
 - [ ] Cache e revalidação de dados com TanStack Query
 - [ ] Perfil público de outros usuários (`/perfil/:username`; o endpoint já existe)
 - [ ] Busca feita no servidor
-- [ ] Testes de integração das páginas com MSW
+- [ ] Testes de integração das páginas com MSW e testes e2e da API em banco de teste
 - [ ] Layout responsivo para mobile
 - [ ] Deploy (front na Vercel e API + banco no Render/Railway)
 
