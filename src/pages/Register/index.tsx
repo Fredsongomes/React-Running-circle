@@ -1,5 +1,6 @@
 import { useActionState } from 'react'
 import { ArrowRight } from 'lucide-react'
+import bannerRegister from '../../assets/images/banner-register.png'
 import AuthLayout from '../../components/AuthLayout'
 import AuthLink from '../../components/AuthLink'
 import Button from '../../components/Button'
@@ -58,7 +59,7 @@ function Register() {
     )
 
   return (
-    <AuthLayout bannerImage="/images/banner-register.png">
+    <AuthLayout bannerImage={bannerRegister}>
       <Title>CADASTRO</Title>
       <Text bold>Junte-se à nossa comunidade!</Text>
       <Text>Preencha seus dados:</Text>

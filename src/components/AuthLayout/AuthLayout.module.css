@@ -3,7 +3,7 @@
   place-items: center;
   min-height: 100vh;
   padding: 2rem;
-  background-image: url('/images/pattern.png');
+  background-image: url('../../assets/images/pattern.png');
   background-size: cover;
   background-position: center;
 }

@@ -139,16 +139,36 @@ Qualquer outra rota redireciona para o feed.
 
 ```
 runner-circle/
+├── .github/workflows/       # CI: lint, testes e build do front-end e do back-end
+├── docs/                    # GIF de demonstração usado neste README
 ├── runner-circle-backend/   # API NestJS (README próprio)
-├── public/images/           # logo e banners
+├── index.html               # HTML base do Vite (favicon apontando para src/assets)
 └── src/
+    ├── assets/              # arquivos estáticos importados como módulos
+    │   ├── icons/           # ícones em SVG (ex.: google.svg)
+    │   ├── images/          # logo, banners das telas de login/cadastro e padrão de fundo
+    │   └── favicon.svg
     ├── components/          # biblioteca de componentes (um por pasta: index.tsx + .module.css)
-    ├── pages/               # telas da aplicação
+    ├── pages/               # telas da aplicação (uma pasta por rota)
     ├── services/            # comunicação com a API (axios, token, posts, users, comments)
     ├── utils/               # funções puras de formatação
     ├── App.tsx              # definição das rotas
     └── main.tsx             # ponto de entrada
 ```
+
+**Por que `src/assets` em vez de `public/`?** Arquivos em `public/` são copiados sem processamento e referenciados por URL em texto (`/images/logo.png`): um caminho errado só aparece como imagem quebrada em tempo de execução. Em `src/assets`, as imagens são importadas como módulos:
+
+```tsx
+import logo from '../../assets/images/logo.png'
+```
+
+Assim o Vite valida o caminho no build (arquivo inexistente quebra o build), adiciona um hash ao nome do arquivo para cache busting e o TypeScript enxerga a dependência. Em CSS vale o mesmo com caminho relativo: `url('../../assets/images/pattern.png')`.
+
+**Convenções**
+
+- Ícones de interface vêm do `lucide-react`; `assets/icons/` guarda apenas ícones de marca/próprios em SVG.
+- Componentes ficam em `components/<Nome>/index.tsx`, com estilos em `<Nome>.module.css` e testes em `<Nome>.test.tsx` na mesma pasta.
+- Páginas não acessam o axios diretamente: toda chamada à API passa por `services/`.
 
 ---
 

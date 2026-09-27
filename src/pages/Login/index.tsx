@@ -1,5 +1,6 @@
 import { useActionState } from 'react'
 import { ArrowRight, ClipboardList } from 'lucide-react'
+import bannerLogin from '../../assets/images/banner-login.png'
 import AuthLayout from '../../components/AuthLayout'
 import AuthLink from '../../components/AuthLink'
 import Button from '../../components/Button'
@@ -53,7 +54,7 @@ function Login() {
     )
 
   return (
-    <AuthLayout bannerImage="/images/banner-login.png">
+    <AuthLayout bannerImage={bannerLogin}>
       <Title>LOGIN</Title>
       <Text bold>Boas-vindas! Faça seu login.</Text>
       <Form action={loginAction}>

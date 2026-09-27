@@ -1,10 +1,11 @@
 import type { ComponentProps } from 'react'
+import logo from '../../assets/images/logo.png'
 import styles from './Logo.module.css'
 
 type LogoProps = ComponentProps<'img'>
 
 function Logo({
-  src = '/images/logo.png',
+  src = logo,
   alt = 'Runner Circle',
   ...rest
 }: LogoProps) {
